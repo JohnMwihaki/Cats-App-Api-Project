@@ -23,6 +23,7 @@
                 <input
                   type="number"
                   class="get-facts"
+                  id="get-facts"
                   name="facts-name"
                   max="50"
                   placeholder="number of cats facts (50 max)"
@@ -44,6 +45,7 @@
                   type="number"
                   class="get-photos"
                   name="photos-name"
+                  id="get-photos"
                   max="10"
                   placeholder="number of cat photos (10max)"
                 />
@@ -59,11 +61,14 @@
         <div class="cats-facts-container">
           <ol class="display-facts" id="display-facts"></ol>
         </div>
+        <div class="loading" id="loading-image"></div>
         <div class="cats-photos-wrapper">
           <div class="display-photos" id="display-photos"></div>
         </div>
       </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
