@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const photosInput = document.getElementById("get-photos");
   const DisplayFacts = document.getElementById("display-facts");
   const DisplayPhotos = document.getElementById("display-photos");
-  const loadingImage = document.getElementById("loading-image-facts");
+  const loadingImage = document.getElementById("loading-image");
 
   function showLoading() {
     loadingImage.style.display = "block";
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   function hideLoading() {
-    loadingImage.style.display = "none"; 
+    loadingImage.style.display = "none";
   }
 
   factsBtn.addEventListener("click", function (e) {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         hideLoading();
       })
-      .catch(function (error) {  
+      .catch(function (error) {
         hideLoading();
           DisplayFacts.innerHTML = `<p class="error">Could not load facts: ${error.message}</p>`;
       });
