@@ -127,7 +127,7 @@ body {
   width: 100px;
   height: 100px;
   border: 10px solid var(--primary-button);
-  border-top: 10px solid var(var(--harmony-color));
+  border-top: 10px solid var(--harmony-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 40px auto;
