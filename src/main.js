@@ -20,15 +20,21 @@ document.addEventListener("DOMContentLoaded", function(){
   factsBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    let limit = factsInput.value;
+    let limit = parseInt(factsInput.value);
+    if(limit>50)
+    {
+     return  DisplayFacts.innerHTML=`<p>Please you are exceed the limit the required limit is 50</p>`
+    } 
+    
+    
 
     showLoading();
 
     axios
-      .get(`https://meowfacts.herokuapp.com/?count=50`)
+      .get(`https://meowfacts.herokuapp.com/?count=${limit}`)
       .then(function (response) {
         const facts = response.data.data;
-        for (let i = 0; i < facts.length; i++) {
+        for (let i = 0; i < Math.min(facts.length,limit); i++) {
           const li = document.createElement("li");
           li.textContent = facts[i];
           DisplayFacts.appendChild(li);
@@ -44,20 +50,25 @@ document.addEventListener("DOMContentLoaded", function(){
   photosBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    let count = photosInput.value;
+    let count = parseInt(photosInput.value);
+    if(count>11)
+    {
+      return  DisplayPhotos.innerHTML=`<p>Please you are exceed the limit the required limit is 10</p>`
+      hideLoading()
+    }
 
     showLoading();
 
     axios
-      .get(`https://api.thecatapi.com/v1/images/search?limit=10`)
+      .get(`https://api.thecatapi.com/v1/images/search?limit=${count}`)
       .then(function (response) {
         const photos = response.data;
-        for (let i = 0; i < photos.length; i++) {
+        for (let i = 0; i < Math.min(photos.length,count); i++) {
           DisplayPhotos.innerHTML += `<img src="${photos[i].url}" alt="cat" style="width: 300px; margin: 10px;" />`;
         }
         hideLoading();
       })
-      .catch(function (error) {
+      .catch(function (error) { 
         hideLoading();
           DisplayPhotos.innerHTML = `<p class="error">Could not load photos: ${error.message}</p>`;
       });
